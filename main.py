@@ -69,7 +69,11 @@ def load_config() -> dict:
         'monitored_models': os.getenv('MONITORED_MODELS', ''),
         'api_url': os.getenv('API_URL', 'https://nof1.ai/api'),
         'log_level': os.getenv('LOG_LEVEL', 'INFO'),
-        'save_history_data': os.getenv('SAVE_HISTORY_DATA', 'False').lower() == 'true'
+        'save_history_data': os.getenv('SAVE_HISTORY_DATA', 'False').lower() == 'true',
+        'bitget_api_key': os.getenv('BITGET_API_KEY'),
+        'bitget_secret_key': os.getenv('BITGET_SECRET_KEY'),
+        'bitget_passphrase': os.getenv('BITGET_PASSPHRASE'),
+        'bitget_api_url': os.getenv('BITGET_API_URL', 'https://api.bitget.com')
     }
     
     # 至少需要配置一个通知渠道（企业微信或Telegram）
@@ -129,7 +133,11 @@ def main():
             telegram_chat_id=config['telegram_chat_id'],
             telegram_proxy=config['telegram_proxy'],
             monitored_models=config['monitored_models'],
-            save_history_data=config['save_history_data']
+            save_history_data=config['save_history_data'],
+            bitget_api_key=config['bitget_api_key'],
+            bitget_secret_key=config['bitget_secret_key'],
+            bitget_passphrase=config['bitget_passphrase'],
+            bitget_api_url=config['bitget_api_url']
         )
         
         # 测试模式
