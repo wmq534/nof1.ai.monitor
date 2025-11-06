@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "scale_ratio": 0.01,
+  "whitelist_models": [],
+  "max_single_trade_amount": 1000.0,
+  "api_credentials_from_env": true,
+  "notification_on_trade": true,
+  "dry_run": false
+}
