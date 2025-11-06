@@ -34,8 +34,8 @@ class TradeAnalyzer:
             last_positions = last_data.get('positions', [])
             current_positions = current_data.get('positions', [])
             
-            self.logger.info(f"上次数据包含 {len(last_positions)} 个模型")
-            self.logger.info(f"当前数据包含 {len(current_positions)} 个模型")
+            self.logger.debug(f"上次数据包含 {len(last_positions)} 个模型")
+            self.logger.debug(f"当前数据包含 {len(current_positions)} 个模型")
             
             # 创建模型字典便于查找
             last_models = {pos['id']: pos for pos in last_positions}
