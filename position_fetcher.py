@@ -148,7 +148,18 @@ class PositionDataFetcher:
                 self.logger.info("API返回空数据，跳过本次检测")
                 return None
             
-            self.logger.info(f"成功获取持仓数据，包含 {len(converted_data.get('positions', []))} 个模型")
+            # 计算实际的模型数量和持仓数量
+            positions = converted_data.get('positions', [])
+            model_count = len(positions)
+            
+            # 计算总的持仓项数量（所有模型的所有交易对）
+            total_position_items = 0
+            if isinstance(positions, list):
+                for model in positions:
+                    if isinstance(model, dict) and 'positions' in model:
+                        total_position_items += len(model.get('positions', {}))
+            
+            self.logger.info(f"成功获取持仓数据，包含 {model_count} 个模型，{total_position_items} 个持仓项")
             
             # 根据配置决定是否保存到data目录
             if self.save_history_data:
